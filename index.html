@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mikhmon – Gestion Hotspot MikroTik</title>
+<meta name="description" content="Mikhmon : gérez votre hotspot wifi MikroTik depuis votre téléphone ou votre ordinateur. Tickets, ventes, partenaires et accès à distance (VPN). Android, Windows, Linux, iPhone.">
+<meta property="og:title" content="Mikhmon – Gestion Hotspot MikroTik">
+<meta property="og:description" content="Tickets, ventes, partenaires et accès à distance. Téléchargement gratuit pour Android, Windows, Linux et iPhone.">
+<meta property="og:image" content="images/partage.jpg">
+<meta name="theme-color" content="#0f2a4a">
+<link rel="icon" href="favicon.png">
+<style>
+  :root {
+    --nuit: #0f2a4a; --bleu: #13507a; --turquoise: #1b8a9e; --turquoise-clair: #e6f3f5;
+    --orange: #f5a524; --vert: #17a34a; --fond: #f4f7fa; --texte: #1d2733; --doux: #5b6b7c; --ligne: #e1e8f0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif; color: var(--texte); background: var(--fond); line-height: 1.55; }
+  a { color: inherit; }
+  img, video { max-width: 100%; display: block; }
+  .page { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+  /* En-tête */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(15,42,74,.96); backdrop-filter: blur(6px); color: #fff; }
+  header .page { display: flex; align-items: center; gap: 14px; height: 62px; }
+  .marque { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; text-decoration: none; }
+  .marque img { width: 36px; height: 36px; border-radius: 9px; }
+  nav.liens { margin-left: auto; display: flex; gap: 18px; font-size: 15px; }
+  nav.liens a { text-decoration: none; opacity: .85; }
+  nav.liens a:hover { opacity: 1; }
+  .langues { display: flex; gap: 4px; margin-left: 10px; }
+  .langues button { background: transparent; color: #cfe3f2; border: 1px solid rgba(255,255,255,.35); border-radius: 6px; padding: 5px 8px; font-weight: 700; font-size: 12px; cursor: pointer; }
+  .langues button.actif { background: var(--turquoise); border-color: var(--turquoise); color: #fff; }
+
+  /* Accueil */
+  .heros { background: linear-gradient(160deg, var(--nuit) 0%, var(--bleu) 55%, var(--turquoise) 100%); color: #fff; overflow: hidden; }
+  .heros .page { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+  .heros h1 { font-size: clamp(32px, 5vw, 52px); line-height: 1.1; letter-spacing: -.5px; }
+  .heros h1 span { color: var(--orange); }
+  .heros p.sous { font-size: 19px; opacity: .92; margin: 18px 0 28px; max-width: 34em; }
+  .boutons { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: 12px; font-weight: 700; font-size: 16px; text-decoration: none; border: 0; cursor: pointer; }
+  .btn.principal { background: var(--orange); color: #1d1300; }
+  .btn.principal:hover { background: #ffb73d; }
+  .btn.clair { background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.3); }
+  .btn.clair:hover { background: rgba(255,255,255,.22); }
+  .petit-texte { font-size: 13px; opacity: .75; margin-top: 14px; }
+  .telephones { position: relative; height: 520px; }
+  .telephones img { position: absolute; width: 240px; border-radius: 30px; border: 9px solid #0b1220; box-shadow: 0 24px 50px rgba(0,0,0,.35); }
+  .telephones img:first-child { left: 8%; top: 30px; transform: rotate(-6deg); }
+  .telephones img:last-child { right: 4%; top: 0; transform: rotate(5deg); }
+
+  section { padding: 72px 0; }
+  section h2 { font-size: clamp(26px, 3.5vw, 36px); text-align: center; color: var(--nuit); letter-spacing: -.3px; }
+  section p.intro { text-align: center; color: var(--doux); max-width: 40em; margin: 10px auto 40px; font-size: 17px; }
+
+  /* Fonctions */
+  .fonctions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .fonction { background: #fff; border-radius: 16px; padding: 22px; box-shadow: 0 1px 3px rgba(15,42,74,.08); }
+  .fonction .ico { width: 46px; height: 46px; border-radius: 12px; background: var(--turquoise-clair); display: grid; place-items: center; font-size: 24px; margin-bottom: 12px; }
+  .fonction h3 { font-size: 17px; color: var(--nuit); margin-bottom: 6px; }
+  .fonction p { color: var(--doux); font-size: 15px; }
+
+  /* Captures */
+  .galerie { display: flex; gap: 18px; overflow-x: auto; padding: 6px 4px 18px; scroll-snap-type: x mandatory; }
+  .galerie figure { flex: 0 0 230px; scroll-snap-align: start; }
+  .galerie img { border-radius: 22px; border: 7px solid #0b1220; box-shadow: 0 10px 24px rgba(15,42,74,.18); }
+  .galerie figcaption { text-align: center; font-size: 14px; color: var(--doux); margin-top: 10px; }
+  .ordinateur { margin-top: 36px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 30px; align-items: center; }
+  .ordinateur img { border-radius: 12px; box-shadow: 0 16px 40px rgba(15,42,74,.2); border: 1px solid var(--ligne); }
+  .ordinateur h3 { font-size: 22px; color: var(--nuit); margin-bottom: 8px; }
+  .ordinateur p { color: var(--doux); }
+
+  /* Vidéo */
+  .video { max-width: 860px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 16px 40px rgba(15,42,74,.2); background: #000; }
+
+  /* Téléchargements */
+  #telecharger { background: #fff; }
+  .plateformes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .plateforme { border: 1px solid var(--ligne); border-radius: 16px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+  .plateforme .ico { font-size: 34px; }
+  .plateforme h3 { color: var(--nuit); font-size: 19px; }
+  .plateforme p { color: var(--doux); font-size: 14px; flex: 1; }
+  .plateforme .btn { justify-content: center; background: var(--turquoise); color: #fff; padding: 12px 16px; font-size: 15px; }
+  .plateforme .btn:hover { background: #157485; }
+  .plateforme .taille { font-size: 12px; color: var(--doux); text-align: center; }
+  .plateforme.android { border: 2px solid var(--turquoise); }
+
+  /* Guide */
+  .etapes { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .etape { background: #fff; border-radius: 16px; padding: 22px; box-shadow: 0 1px 3px rgba(15,42,74,.08); }
+  .etape h3 { color: var(--nuit); font-size: 18px; margin-bottom: 10px; }
+  .etape ol { padding-left: 20px; color: var(--texte); }
+  .etape li { margin: 6px 0; }
+  .astuce { background: #fff8e6; border: 1px solid #f5d58a; border-radius: 12px; padding: 12px 14px; margin-top: 12px; font-size: 14px; }
+
+  /* Contact */
+  .contact { text-align: center; }
+  .btn.whatsapp { background: #25d366; color: #fff; font-size: 17px; }
+  .btn.whatsapp:hover { background: #1fb957; }
+
+  footer { background: var(--nuit); color: #b9cbe0; padding: 32px 0; font-size: 14px; }
+  footer .page { display: flex; flex-wrap: wrap; gap: 14px 28px; justify-content: space-between; }
+  footer a { color: #fff; }
+
+  /* Langue */
+  [data-lg="en"] { display: none; }
+  html[lang="en"] [data-lg="fr"] { display: none; }
+  html[lang="en"] [data-lg="en"] { display: revert; }
+
+  @media (max-width: 900px) {
+    nav.liens { display: none; }
+    .langues { margin-left: auto; }
+    .heros .page { grid-template-columns: 1fr; padding-top: 44px; padding-bottom: 20px; }
+    .telephones { height: 400px; }
+    .telephones img { width: 185px; }
+    .fonctions, .plateformes { grid-template-columns: 1fr 1fr; }
+    .ordinateur, .etapes { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .fonctions, .plateformes { grid-template-columns: 1fr; }
+    .telephones { height: 330px; }
+    .telephones img { width: 150px; border-width: 6px; border-radius: 22px; }
+    section { padding: 52px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="page">
+    <a class="marque" href="#"><img src="images/icone.png" alt="">Mikhmon</a>
+    <nav class="liens">
+      <a href="#fonctions"><span data-lg="fr">Fonctions</span><span data-lg="en">Features</span></a>
+      <a href="#apercu"><span data-lg="fr">Aperçu</span><span data-lg="en">Preview</span></a>
+      <a href="#telecharger"><span data-lg="fr">Télécharger</span><span data-lg="en">Download</span></a>
+      <a href="#installer"><span data-lg="fr">Installation</span><span data-lg="en">Install</span></a>
+    </nav>
+    <div class="langues">
+      <button type="button" data-langue="fr">FR</button>
+      <button type="button" data-langue="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<div class="heros">
+  <div class="page">
+    <div>
+      <h1 data-lg="fr">Gérez votre <span>hotspot wifi</span> MikroTik depuis votre téléphone</h1>
+      <h1 data-lg="en">Manage your MikroTik <span>wifi hotspot</span> from your phone</h1>
+      <p class="sous" data-lg="fr">Tickets, ventes, revendeurs et accès à distance par VPN. Sur Android, Windows, Linux et iPhone, en français et en anglais. Compatible Mikhmon v7.13.5.</p>
+      <p class="sous" data-lg="en">Vouchers, sales, resellers and remote access through VPN. On Android, Windows, Linux and iPhone, in English and French. Compatible with Mikhmon v7.13.5.</p>
+      <div class="boutons">
+        <a class="btn principal lien-android" href="#telecharger">📱 <span data-lg="fr">Télécharger pour Android</span><span data-lg="en">Download for Android</span></a>
+        <a class="btn clair" href="#telecharger">💻 <span data-lg="fr">Windows, Linux, iPhone</span><span data-lg="en">Windows, Linux, iPhone</span></a>
+      </div>
+      <p class="petit-texte"><span data-lg="fr">Gratuit · Sans publicité · Vos données restent sur votre appareil</span><span data-lg="en">Free · No ads · Your data stays on your device</span> · v<span class="version">7.13.5</span></p>
+    </div>
+    <div class="telephones" aria-hidden="true">
+      <img src="images/fr-1.jpg" data-src-en="images/en-1.jpg" alt="">
+      <img src="images/fr-3.jpg" data-src-en="images/en-3.jpg" alt="">
+    </div>
+  </div>
+</div>
+
+<section id="fonctions">
+  <div class="page">
+    <h2><span data-lg="fr">Tout votre hotspot, dans votre poche</span><span data-lg="en">Your whole hotspot, in your pocket</span></h2>
+    <p class="intro"><span data-lg="fr">Mikhmon se connecte directement à votre routeur MikroTik (RouterOS 6 et 7) et reprend les scripts, rapports et partenaires de Mikhmon v7.13.5.</span><span data-lg="en">Mikhmon connects directly to your MikroTik router (RouterOS 6 and 7) and keeps the scripts, reports and partners of Mikhmon v7.13.5.</span></p>
+    <div class="fonctions">
+      <div class="fonction"><div class="ico">📊</div>
+        <h3><span data-lg="fr">Tableau de bord</span><span data-lg="en">Dashboard</span></h3>
+        <p><span data-lg="fr">Clients connectés, ventes du jour et du mois, état du routeur en temps réel.</span><span data-lg="en">Online clients, daily and monthly sales, router status in real time.</span></p></div>
+      <div class="fonction"><div class="ico">🎫</div>
+        <h3><span data-lg="fr">Tickets en lot</span><span data-lg="en">Batch vouchers</span></h3>
+        <p><span data-lg="fr">Des dizaines de tickets en un geste, en PDF prêt à imprimer ou à partager.</span><span data-lg="en">Dozens of vouchers in one tap, as a print-ready or shareable PDF.</span></p></div>
+      <div class="fonction"><div class="ico">💰</div>
+        <h3><span data-lg="fr">Rapports de ventes</span><span data-lg="en">Sales reports</span></h3>
+        <p><span data-lg="fr">Chiffre d'affaires par jour et par mois, même sur RouterOS 7.10 et plus.</span><span data-lg="en">Revenue by day and month, including RouterOS 7.10 and newer.</span></p></div>
+      <div class="fonction"><div class="ico">🤝</div>
+        <h3><span data-lg="fr">Partenaires revendeurs</span><span data-lg="en">Reseller partners</span></h3>
+        <p><span data-lg="fr">Commissions calculées automatiquement et espace partenaire en lecture seule.</span><span data-lg="en">Automatic commissions and a read-only partner space.</span></p></div>
+      <div class="fonction"><div class="ico">🔒</div>
+        <h3><span data-lg="fr">Accès à distance (VPN)</span><span data-lg="en">Remote access (VPN)</span></h3>
+        <p><span data-lg="fr">Back To Home de MikroTik : gérez le routeur de n'importe où, sans adresse IP fixe. Le VPN ne s'active que hors du wifi du routeur.</span><span data-lg="en">MikroTik Back To Home: manage the router from anywhere, no public IP needed. The VPN only turns on away from the router's wifi.</span></p></div>
+      <div class="fonction"><div class="ico">🌍</div>
+        <h3><span data-lg="fr">Partout, en 2 langues</span><span data-lg="en">Everywhere, in 2 languages</span></h3>
+        <p><span data-lg="fr">Android, iPhone, Windows et Linux, en français et en anglais. Plusieurs routeurs.</span><span data-lg="en">Android, iPhone, Windows and Linux, in English and French. Several routers.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section id="apercu" style="background:#fff">
+  <div class="page">
+    <h2><span data-lg="fr">Aperçu</span><span data-lg="en">Preview</span></h2>
+    <p class="intro"><span data-lg="fr">Une application simple, pensée pour les gérants de wifi zone.</span><span data-lg="en">A simple app, made for wifi zone managers.</span></p>
+    <div class="galerie">
+      <figure><img src="images/fr-1.jpg" data-src-en="images/en-1.jpg" alt="" loading="lazy"><figcaption><span data-lg="fr">Tableau de bord</span><span data-lg="en">Dashboard</span></figcaption></figure>
+      <figure><img src="images/fr-2.jpg" data-src-en="images/en-2.jpg" alt="" loading="lazy"><figcaption><span data-lg="fr">Tickets</span><span data-lg="en">Vouchers</span></figcaption></figure>
+      <figure><img src="images/fr-3.jpg" data-src-en="images/en-3.jpg" alt="" loading="lazy"><figcaption><span data-lg="fr">Rapports</span><span data-lg="en">Reports</span></figcaption></figure>
+      <figure><img src="images/fr-4.jpg" data-src-en="images/en-4.jpg" alt="" loading="lazy"><figcaption><span data-lg="fr">Partenaires</span><span data-lg="en">Partners</span></figcaption></figure>
+      <figure><img src="images/fr-5.jpg" data-src-en="images/en-5.jpg" alt="" loading="lazy"><figcaption>Back To Home</figcaption></figure>
+      <figure><img src="images/fr-6.jpg" data-src-en="images/en-6.jpg" alt="" loading="lazy"><figcaption><span data-lg="fr">Clients connectés</span><span data-lg="en">Online clients</span></figcaption></figure>
+    </div>
+    <div class="ordinateur">
+      <img src="images/ordinateur-fr.jpg" data-src-en="images/ordinateur-en.jpg" alt="" loading="lazy">
+      <div>
+        <h3><span data-lg="fr">Aussi sur ordinateur</span><span data-lg="en">Also on your computer</span></h3>
+        <p><span data-lg="fr">La même application sur Windows et Linux, avec un grand écran et le menu à gauche. Idéal au bureau pour imprimer les tickets.</span><span data-lg="en">The same app on Windows and Linux, with a large screen and the menu on the left. Perfect at the office to print vouchers.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="page">
+    <h2><span data-lg="fr">Mikhmon en 30 secondes</span><span data-lg="en">Mikhmon in 30 seconds</span></h2>
+    <p class="intro"></p>
+    <div class="video"><video id="video" controls preload="none" poster="images/partage.jpg" src="videos/mikhmon-fr.mp4" data-src-en="videos/mikhmon-en.mp4"></video></div>
+  </div>
+</section>
+
+<section id="telecharger">
+  <div class="page">
+    <h2><span data-lg="fr">Télécharger Mikhmon</span><span data-lg="en">Download Mikhmon</span></h2>
+    <p class="intro"><span data-lg="fr">Gratuit. Choisissez votre appareil. Les liens donnent toujours la dernière version.</span><span data-lg="en">Free. Pick your device. Links always give the latest version.</span></p>
+    <div class="plateformes">
+      <div class="plateforme android"><div class="ico">📱</div><h3>Android</h3>
+        <p><span data-lg="fr">Android 7 ou plus récent. VPN intégré.</span><span data-lg="en">Android 7 or newer. Built-in VPN.</span></p>
+        <a class="btn" data-fichier="Mikhmon-android.apk" href="#">⬇ <span data-lg="fr">Télécharger l'APK</span><span data-lg="en">Download the APK</span></a>
+        <div class="taille">≈ 27 Mo</div></div>
+      <div class="plateforme"><div class="ico">💻</div><h3>Windows</h3>
+        <p><span data-lg="fr">Windows 10 et 11, 64 bits. Installateur.</span><span data-lg="en">Windows 10 and 11, 64-bit. Installer.</span></p>
+        <a class="btn" data-fichier="Mikhmon-windows.exe" href="#">⬇ <span data-lg="fr">Télécharger</span><span data-lg="en">Download</span></a>
+        <div class="taille">≈ 120 Mo</div></div>
+      <div class="plateforme"><div class="ico">🐧</div><h3>Linux</h3>
+        <p><span data-lg="fr">AppImage 64 bits : rendre exécutable puis lancer.</span><span data-lg="en">64-bit AppImage: make it executable, then run.</span></p>
+        <a class="btn" data-fichier="Mikhmon-linux.AppImage" href="#">⬇ <span data-lg="fr">Télécharger</span><span data-lg="en">Download</span></a>
+        <div class="taille">≈ 126 Mo</div></div>
+      <div class="plateforme"><div class="ico">🍎</div><h3>iPhone</h3>
+        <p><span data-lg="fr">Version non signée, à installer avec Sideloadly ou AltStore depuis un ordinateur.</span><span data-lg="en">Unsigned build, to install with Sideloadly or AltStore from a computer.</span></p>
+        <a class="btn" data-fichier="Mikhmon-iphone.ipa" href="#">⬇ <span data-lg="fr">Télécharger l'IPA</span><span data-lg="en">Download the IPA</span></a>
+        <div class="taille">≈ 7 Mo</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="installer">
+  <div class="page">
+    <h2><span data-lg="fr">Installation</span><span data-lg="en">Installation</span></h2>
+    <p class="intro"><span data-lg="fr">Quelques étapes, une seule fois.</span><span data-lg="en">A few steps, only once.</span></p>
+    <div class="etapes">
+      <div class="etape">
+        <h3>📱 Android</h3>
+        <ol data-lg="fr">
+          <li>Téléchargez l'APK <b>directement sur le téléphone</b> (pas par WhatsApp, qui coupe les gros fichiers).</li>
+          <li>Ouvrez le fichier dans <b>Fichiers → Téléchargements</b>, puis touchez <b>Installer</b>.</li>
+          <li>Si Android le demande, autorisez <b>« Installer des applications inconnues »</b>.</li>
+          <li>Si Play Protect s'affiche : <b>Plus de détails → Installer quand même</b>.</li>
+        </ol>
+        <ol data-lg="en">
+          <li>Download the APK <b>directly on the phone</b> (not through WhatsApp, which cuts large files).</li>
+          <li>Open it in <b>Files → Downloads</b>, then tap <b>Install</b>.</li>
+          <li>If Android asks, allow <b>"Install unknown apps"</b>.</li>
+          <li>If Play Protect shows up: <b>More details → Install anyway</b>.</li>
+        </ol>
+        <div class="astuce"><span data-lg="fr">Le fichier doit faire environ <b>27 Mo</b>. S'il est beaucoup plus petit, il est incomplet : téléchargez-le à nouveau.</span><span data-lg="en">The file should be about <b>27 MB</b>. If it is much smaller, it is incomplete: download it again.</span></div>
+      </div>
+      <div class="etape">
+        <h3>💻 Windows</h3>
+        <ol data-lg="fr">
+          <li>Téléchargez et ouvrez <b>Mikhmon-windows.exe</b>.</li>
+          <li>Si Windows affiche « Windows a protégé votre ordinateur » : <b>Informations complémentaires → Exécuter quand même</b>.</li>
+          <li>Suivez l'installation : un raccourci <b>Mikhmon</b> apparaît sur le bureau.</li>
+        </ol>
+        <ol data-lg="en">
+          <li>Download and open <b>Mikhmon-windows.exe</b>.</li>
+          <li>If Windows shows "Windows protected your PC": <b>More info → Run anyway</b>.</li>
+          <li>Follow the installer: a <b>Mikhmon</b> shortcut appears on the desktop.</li>
+        </ol>
+      </div>
+      <div class="etape">
+        <h3>🔌 <span data-lg="fr">Se connecter au routeur</span><span data-lg="en">Connect to the router</span></h3>
+        <ol data-lg="fr">
+          <li>Dans Winbox, <b>IP → Services</b> : activez <b>api</b> (port 8728).</li>
+          <li>Dans Mikhmon : <b>+ Ajouter un routeur</b>, adresse (ex. 192.168.88.1), utilisateur et mot de passe MikroTik.</li>
+          <li>Touchez le routeur : le tableau de bord s'affiche.</li>
+        </ol>
+        <ol data-lg="en">
+          <li>In Winbox, <b>IP → Services</b>: enable <b>api</b> (port 8728).</li>
+          <li>In Mikhmon: <b>+ Add a router</b>, address (e.g. 192.168.88.1), MikroTik username and password.</li>
+          <li>Tap the router: the dashboard shows up.</li>
+        </ol>
+      </div>
+      <div class="etape">
+        <h3>🔒 <span data-lg="fr">Accès à distance (VPN)</span><span data-lg="en">Remote access (VPN)</span></h3>
+        <ol data-lg="fr">
+          <li>Routeur en RouterOS <b>7.12 ou plus récent</b>, téléphone sur le wifi du routeur.</li>
+          <li><b>Plus → Back To Home → Activer</b>.</li>
+          <li><b>« Activer le VPN sur ce téléphone »</b> : le VPN s'ouvrira tout seul hors du wifi.</li>
+        </ol>
+        <ol data-lg="en">
+          <li>Router on RouterOS <b>7.12 or newer</b>, phone on the router's wifi.</li>
+          <li><b>More → Back To Home → Turn on</b>.</li>
+          <li><b>"Turn on the VPN on this phone"</b>: the VPN opens by itself away from the wifi.</li>
+        </ol>
+        <div class="astuce"><span data-lg="fr">Un accès = un seul appareil : créez un accès pour chaque téléphone ou ordinateur.</span><span data-lg="en">One access = one device: create one access for each phone or computer.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact" style="background:#fff">
+  <div class="page">
+    <h2><span data-lg="fr">Une question ?</span><span data-lg="en">A question?</span></h2>
+    <p class="intro"><span data-lg="fr">Écrivez-nous, nous vous aidons à installer et configurer Mikhmon.</span><span data-lg="en">Write to us, we help you install and set up Mikhmon.</span></p>
+    <a class="btn whatsapp" id="lien-whatsapp" href="#" target="_blank" rel="noopener">💬 <span data-lg="fr">Nous contacter sur WhatsApp</span><span data-lg="en">Contact us on WhatsApp</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="page">
+    <div>© <span id="annee">2026</span> NUMOU · Mikhmon v<span class="version">7.13.5</span></div>
+    <div><a href="confidentialite.html"><span data-lg="fr">Politique de confidentialité</span><span data-lg="en">Privacy policy</span></a></div>
+    <div data-lg="fr">Mikhmon n'est pas affilié à MikroTik. MikroTik et RouterOS sont des marques de MikroTik.</div>
+    <div data-lg="en">Mikhmon is not affiliated with MikroTik. MikroTik and RouterOS are trademarks of MikroTik.</div>
+  </div>
+</footer>
+
+<script>
+  /* Réglages du site : seul endroit à modifier */
+  const REGLAGES = {
+    depot: 'Abousoumahoro/mikhmon',   // dépôt public GitHub qui contient les fichiers à télécharger (page Releases)
+    whatsapp: '2250172868486',                   // numéro au format international, sans + ni espaces (ex. 22507000000)
+    version: '7.13.5'
+  };
+
+  const base = 'https://github.com/' + REGLAGES.depot + '/releases/latest/download/';
+  document.querySelectorAll('[data-fichier]').forEach((a) => { a.href = base + a.dataset.fichier; });
+  document.querySelectorAll('.lien-android').forEach((a) => { a.href = base + 'Mikhmon-android.apk'; });
+  document.querySelectorAll('.version').forEach((e) => { e.textContent = REGLAGES.version; });
+  document.getElementById('annee').textContent = new Date().getFullYear();
+  if (REGLAGES.whatsapp) {
+    document.getElementById('lien-whatsapp').href = 'https://wa.me/' + REGLAGES.whatsapp + '?text=' + encodeURIComponent('Bonjour, je voudrais des informations sur Mikhmon.');
+  } else {
+    document.getElementById('contact').style.display = 'none';
+  }
+
+  /* Langue : choix enregistré, sinon langue du navigateur */
+  function langue(lg) {
+    document.documentElement.lang = lg;
+    document.querySelectorAll('[data-langue]').forEach((b) => b.classList.toggle('actif', b.dataset.langue === lg));
+    document.querySelectorAll('[data-src-en]').forEach((el) => {
+      if (!el.dataset.srcFr) el.dataset.srcFr = el.getAttribute('src');
+      const src = lg === 'en' ? el.dataset.srcEn : el.dataset.srcFr;
+      if (el.getAttribute('src') !== src) el.setAttribute('src', src);
+    });
+    try { localStorage.setItem('mikhmon-site-langue', lg); } catch (e) { /* rien */ }
+  }
+  document.querySelectorAll('[data-langue]').forEach((b) => b.addEventListener('click', () => langue(b.dataset.langue)));
+  let choix = null;
+  try { choix = localStorage.getItem('mikhmon-site-langue'); } catch (e) { /* rien */ }
+  langue(choix || (/^fr/i.test(navigator.language || 'fr') ? 'fr' : 'en'));
+</script>
+</body>
+</html>
