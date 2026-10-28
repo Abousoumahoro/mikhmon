@@ -3,11 +3,41 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mikhmon – Gestion Hotspot MikroTik</title>
-<meta name="description" content="Mikhmon : gérez votre hotspot wifi MikroTik depuis votre téléphone ou votre ordinateur. Tickets, ventes, partenaires et accès à distance (VPN). Android, Windows, Linux, iPhone.">
-<meta property="og:title" content="Mikhmon – Gestion Hotspot MikroTik">
-<meta property="og:description" content="Tickets, ventes, partenaires et accès à distance. Téléchargement gratuit pour Android, Windows, Linux et iPhone.">
-<meta property="og:image" content="images/partage.jpg">
+<title>Mikhmon – Application de gestion Hotspot MikroTik (Android, Windows) | Tickets wifi zone</title>
+<meta name="description" content="Mikhmon : application gratuite pour gérer votre hotspot wifi MikroTik (wifi zone) depuis votre téléphone Android ou votre ordinateur Windows. Tickets en lot, ventes, revendeurs, VPN Back To Home. Côte d'Ivoire et Afrique francophone.">
+<meta name="keywords" content="Mikhmon, Mikhmon Android, Mikhmon application, MikroTik hotspot, gestion hotspot MikroTik, wifi zone, tickets wifi, Back To Home, RouterOS, Côte d'Ivoire, NUMOU">
+<meta name="author" content="NUMOU">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://abousoumahoro.github.io/mikhmon/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mikhmon">
+<meta property="og:url" content="https://abousoumahoro.github.io/mikhmon/">
+<meta property="og:title" content="Mikhmon – Gestion Hotspot MikroTik (Android, Windows)">
+<meta property="og:description" content="Gérez votre wifi zone MikroTik depuis votre téléphone : tickets, ventes, revendeurs et accès à distance. Téléchargement gratuit.">
+<meta property="og:image" content="https://abousoumahoro.github.io/mikhmon/images/partage.jpg">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Mikhmon",
+  "alternateName": "Mikhmon – Gestion Hotspot MikroTik",
+  "description": "Application de gestion de hotspot wifi MikroTik : tickets en lot, ventes, revendeurs, VPN Back To Home. En français et en anglais.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android, Windows, Linux, iOS",
+  "softwareVersion": "7.13.5",
+  "inLanguage": ["fr", "en"],
+  "url": "https://abousoumahoro.github.io/mikhmon/",
+  "image": "https://abousoumahoro.github.io/mikhmon/images/icone.png",
+  "screenshot": "https://abousoumahoro.github.io/mikhmon/images/fr-1.jpg",
+  "downloadUrl": "https://github.com/Abousoumahoro/mikhmon/releases/latest",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "XOF" },
+  "author": { "@type": "Organization", "name": "NUMOU" },
+  "publisher": { "@type": "Organization", "name": "NUMOU" }
+}
+</script>
 <meta name="theme-color" content="#0f2a4a">
 <link rel="icon" href="favicon.png">
 <style>
@@ -95,6 +125,12 @@
   .etape ol { padding-left: 20px; color: var(--texte); }
   .etape li { margin: 6px 0; }
   .astuce { background: #fff8e6; border: 1px solid #f5d58a; border-radius: 12px; padding: 12px 14px; margin-top: 12px; font-size: 14px; }
+
+  /* Questions fréquentes */
+  .faq { max-width: 820px; margin: 0 auto; }
+  .faq details { background: #fff; border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(15,42,74,.08); }
+  .faq summary { font-weight: 700; color: var(--nuit); cursor: pointer; }
+  .faq details p { color: var(--doux); margin-top: 8px; }
 
   /* Contact */
   .contact { text-align: center; }
@@ -308,6 +344,27 @@
         </ol>
         <div class="astuce"><span data-lg="fr">Un accès = un seul appareil : créez un accès pour chaque téléphone ou ordinateur.</span><span data-lg="en">One access = one device: create one access for each phone or computer.</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="page">
+    <h2><span data-lg="fr">Questions fréquentes</span><span data-lg="en">Frequently asked questions</span></h2>
+    <p class="intro"></p>
+    <div class="faq">
+      <details><summary><span data-lg="fr">Qu'est-ce que Mikhmon ?</span><span data-lg="en">What is Mikhmon?</span></summary>
+        <p><span data-lg="fr">Mikhmon est une application de gestion de hotspot MikroTik pour les gérants de wifi zone : création de tickets wifi, suivi des ventes, commissions des revendeurs et accès à distance au routeur. Elle fonctionne sur Android, Windows, Linux et iPhone.</span><span data-lg="en">Mikhmon is a MikroTik hotspot management app for wifi zone managers: wifi vouchers, sales tracking, reseller commissions and remote access to the router. It runs on Android, Windows, Linux and iPhone.</span></p></details>
+      <details><summary><span data-lg="fr">Mikhmon est-elle gratuite ?</span><span data-lg="en">Is Mikhmon free?</span></summary>
+        <p><span data-lg="fr">Oui, l'application est gratuite et sans publicité. Vos identifiants et vos données restent sur votre appareil et sur votre routeur.</span><span data-lg="en">Yes, the app is free and has no ads. Your credentials and data stay on your device and your router.</span></p></details>
+      <details><summary><span data-lg="fr">Avec quels routeurs MikroTik fonctionne-t-elle ?</span><span data-lg="en">Which MikroTik routers does it work with?</span></summary>
+        <p><span data-lg="fr">Avec tous les routeurs MikroTik sous RouterOS 6 et RouterOS 7 (y compris 7.10 et plus récent), dès que le service API est activé (IP → Services → api, port 8728). Elle reprend les scripts et rapports de Mikhmon v7.13.5.</span><span data-lg="en">With all MikroTik routers running RouterOS 6 and RouterOS 7 (including 7.10 and newer), once the API service is enabled (IP → Services → api, port 8728). It keeps the scripts and reports of Mikhmon v7.13.5.</span></p></details>
+      <details><summary><span data-lg="fr">Comment gérer mon routeur à distance ?</span><span data-lg="en">How do I manage my router remotely?</span></summary>
+        <p><span data-lg="fr">Avec Back To Home, le VPN gratuit de MikroTik (RouterOS 7.12 ou plus récent). Dans Mikhmon : Plus → Back To Home → Activer, puis « Activer le VPN sur ce téléphone ». Le VPN ne s'active que lorsque vous n'êtes pas sur le wifi du routeur, sans adresse IP fixe.</span><span data-lg="en">With Back To Home, MikroTik's free VPN (RouterOS 7.12 or newer). In Mikhmon: More → Back To Home → Turn on, then "Turn on the VPN on this phone". The VPN only turns on when you are away from the router's wifi, no public IP needed.</span></p></details>
+      <details><summary><span data-lg="fr">Puis-je donner un accès à mes revendeurs ?</span><span data-lg="en">Can I give my resellers access?</span></summary>
+        <p><span data-lg="fr">Oui : chaque partenaire a son identifiant et voit, en lecture seule, ses ventes, sa commission et ses clients connectés. Les commissions sont calculées automatiquement selon le prix du ticket.</span><span data-lg="en">Yes: each partner gets a login and sees, read-only, their sales, commission and online clients. Commissions are calculated automatically from the voucher price.</span></p></details>
+      <details><summary><span data-lg="fr">Pourquoi l'APK ne s'installe pas ?</span><span data-lg="en">Why won't the APK install?</span></summary>
+        <p><span data-lg="fr">Le plus souvent, le fichier est incomplet (envoyé par WhatsApp) : téléchargez-le directement depuis ce site, il doit faire environ 27 Mo. Autorisez ensuite « Installer des applications inconnues » et, si Play Protect s'affiche, choisissez « Installer quand même ».</span><span data-lg="en">Most often the file is incomplete (sent through WhatsApp): download it directly from this site, it should be about 27 MB. Then allow "Install unknown apps" and, if Play Protect shows up, choose "Install anyway".</span></p></details>
     </div>
   </div>
 </section>
