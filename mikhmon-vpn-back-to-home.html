@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mikhmon VPN : gérer son routeur MikroTik à distance avec Back To Home</title>
+<meta name="description" content="Gérez votre hotspot MikroTik à distance, sans IP fixe, avec Mikhmon et Back To Home (WireGuard). Le VPN s&#x27;active seulement hors du wifi du routeur.">
+<link rel="canonical" href="https://mymikhmon.org/mikhmon-vpn-back-to-home.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mikhmon">
+<meta property="og:url" content="https://mymikhmon.org/mikhmon-vpn-back-to-home.html">
+<meta property="og:title" content="Mikhmon VPN : gérer son routeur MikroTik à distance avec Back To Home">
+<meta property="og:description" content="Gérez votre hotspot MikroTik à distance, sans IP fixe, avec Mikhmon et Back To Home (WireGuard). Le VPN s&#x27;active seulement hors du wifi du routeur.">
+<meta property="og:image" content="https://mymikhmon.org/images/partage.jpg">
+<meta name="theme-color" content="#0f2a4a">
+<link rel="icon" href="favicon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Mikhmon VPN : gérer son routeur MikroTik à distance avec Back To Home", "description": "Gérez votre hotspot MikroTik à distance, sans IP fixe, avec Mikhmon et Back To Home (WireGuard). Le VPN s'active seulement hors du wifi du routeur.", "inLanguage": "fr", "mainEntityOfPage": "https://mymikhmon.org/mikhmon-vpn-back-to-home.html", "image": "https://mymikhmon.org/images/partage.jpg", "author": {"@type": "Organization", "name": "NUMOU"}, "publisher": {"@type": "Organization", "name": "NUMOU", "logo": {"@type": "ImageObject", "url": "https://mymikhmon.org/images/icone.png"}}, "about": {"@type": "SoftwareApplication", "name": "Mikhmon", "applicationCategory": "UtilitiesApplication", "operatingSystem": "Android, Windows, Linux, iOS", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "XOF"}}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Mikhmon", "item": "https://mymikhmon.org/"}, {"@type": "ListItem", "position": 2, "name": "Mikhmon VPN Back To Home", "item": "https://mymikhmon.org/mikhmon-vpn-back-to-home.html"}]}</script>
+<style>
+:root{--nuit:#0f2a4a;--bleu:#13507a;--turquoise:#1b8a9e;--orange:#f5a524;--fond:#f4f7fa;--texte:#1d2733;--doux:#5b6b7c;--ligne:#e1e8f0}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--texte);background:var(--fond);line-height:1.6}
+a{color:var(--turquoise)}header{background:var(--nuit);color:#fff}header .page{display:flex;align-items:center;gap:12px;height:60px}
+.marque{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font-weight:800;font-size:19px}.marque img{width:34px;height:34px;border-radius:8px}
+header nav{margin-left:auto}header nav a{color:#cfe3f2;text-decoration:none;font-size:15px}
+.page{max-width:860px;margin:0 auto;padding:0 20px}main{padding:36px 0 56px}.fil{font-size:14px;color:var(--doux);margin-bottom:12px}
+h1{font-size:clamp(26px,4vw,36px);line-height:1.2;color:var(--nuit);margin-bottom:14px}.intro{font-size:18px;color:var(--doux);margin-bottom:26px}
+section{background:#fff;border-radius:14px;padding:22px;margin-bottom:16px;box-shadow:0 1px 3px rgba(15,42,74,.08)}
+h2{font-size:21px;color:var(--nuit);margin-bottom:10px}section p,section li{margin:6px 0}section ol,section ul{padding-left:22px}
+.btn{display:inline-block;background:var(--orange);color:#1d1300;font-weight:700;text-decoration:none;padding:12px 20px;border-radius:10px;margin:8px 0}
+.autres{margin-top:28px}.autres h2{font-size:18px;margin-bottom:8px}.autres ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.autres a{display:inline-block;background:#fff;border:1px solid var(--ligne);border-radius:20px;padding:6px 14px;text-decoration:none;font-size:14px}
+footer{background:var(--nuit);color:#b9cbe0;padding:24px 0;font-size:14px}footer a{color:#fff}
+</style>
+</head>
+<body>
+<header><div class="page"><a class="marque" href="./"><img src="images/icone.png" alt="Mikhmon">Mikhmon</a><nav><a href="telecharger-mikhmon.html">Télécharger</a></nav></div></header>
+<main><div class="page">
+<p class="fil"><a href="./">Mikhmon</a> › Mikhmon VPN Back To Home</p>
+<h1>Mikhmon VPN : votre routeur MikroTik depuis n&#x27;importe où</h1>
+<p class="intro">Back To Home est le VPN gratuit de MikroTik (WireGuard). Mikhmon l&#x27;active pour vous et s&#x27;en sert pour joindre votre routeur quand vous n&#x27;êtes pas sur son wifi, même sans adresse IP fixe.</p>
+<section>
+<h2>Ce qu&#x27;il faut</h2>
+<ul><li>Un routeur MikroTik en <b>RouterOS 7.12 ou plus récent</b>, avec accès à internet.</li><li>Mikhmon sur Android (VPN intégré), ou sur ordinateur avec l'application WireGuard.</li></ul>
+</section>
+<section>
+<h2>Activer le VPN en 3 étapes</h2>
+<ol><li>Sur le wifi du routeur, ouvrez-le dans Mikhmon.</li><li><b>Plus → Back To Home → Activer</b>.</li><li><b>« Activer le VPN sur ce téléphone »</b> : Mikhmon crée un accès réservé à ce téléphone.</li></ol><p>Ensuite, en 4G ou sur un autre wifi, Mikhmon ouvre le VPN tout seul ; sur le wifi du routeur, il se connecte directement, sans VPN.</p>
+</section>
+<section>
+<h2>Un accès par appareil</h2>
+<p>Un accès Back To Home ne fonctionne que sur <b>un seul appareil à la fois</b>. Créez un accès pour chaque téléphone ou ordinateur : Mikhmon vous prévient si un accès est déjà utilisé ailleurs.</p>
+</section>
+<section>
+<h2>Back To Home n&#x27;est pas disponible ?</h2>
+<p>Mettez votre routeur à jour (RouterOS 7.12 ou plus). Les routeurs virtuels CHR n'ont pas Back To Home.</p>
+</section>
+<div class="autres"><h2>Autres guides Mikhmon</h2><ul><li><a href="telecharger-mikhmon.html">Télécharger Mikhmon</a></li><li><a href="mikhmon-android.html">Mikhmon Android</a></li><li><a href="mikhmon-windows.html">Mikhmon Windows</a></li><li><a href="mikhmon-tickets-wifi-zone.html">Tickets wifi zone</a></li><li><a href="mikhmon-revendeurs-commissions.html">Revendeurs et commissions</a></li></ul></div>
+</div></main>
+<footer><div class="page">© 2026 NUMOU · <a href="./">Mikhmon</a> · <a href="https://www.tiktok.com/@mymikhmon">TikTok @mymikhmon</a> · <a href="confidentialite.html">Confidentialité</a><br>Mikhmon n'est pas affilié à MikroTik. MikroTik et RouterOS sont des marques de MikroTik.</div></footer>
+</body>
+</html>

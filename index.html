@@ -126,6 +126,10 @@
   .etape li { margin: 6px 0; }
   .astuce { background: #fff8e6; border: 1px solid #f5d58a; border-radius: 12px; padding: 12px 14px; margin-top: 12px; font-size: 14px; }
 
+  a.guide { text-decoration: none; display: block; border: 1px solid var(--ligne); }
+  a.guide:hover { border-color: var(--turquoise); }
+  a.guide h3 { color: var(--turquoise); }
+
   /* Questions fréquentes */
   .faq { max-width: 820px; margin: 0 auto; }
   .faq details { background: #fff; border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(15,42,74,.08); }
@@ -176,6 +180,7 @@
       <a href="#apercu"><span data-lg="fr">Aperçu</span><span data-lg="en">Preview</span></a>
       <a href="#telecharger"><span data-lg="fr">Télécharger</span><span data-lg="en">Download</span></a>
       <a href="#installer"><span data-lg="fr">Installation</span><span data-lg="en">Install</span></a>
+      <a href="#guides"><span data-lg="fr">Guides</span><span data-lg="en">Guides</span></a>
     </nav>
     <div class="langues">
       <button type="button" data-langue="fr">FR</button>
@@ -347,6 +352,21 @@
         </ol>
         <div class="astuce"><span data-lg="fr">Un accès = un seul appareil : créez un accès pour chaque téléphone ou ordinateur.</span><span data-lg="en">One access = one device: create one access for each phone or computer.</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="guides" style="background:#fff">
+  <div class="page">
+    <h2><span data-lg="fr">Guides Mikhmon</span><span data-lg="en">Mikhmon guides</span></h2>
+    <p class="intro"><span data-lg="fr">Tout pour bien démarrer, pas à pas.</span><span data-lg="en">Step-by-step guides (in French).</span></p>
+    <div class="fonctions">
+      <a class="fonction guide" href="telecharger-mikhmon.html"><h3>Télécharger Mikhmon</h3><p>APK Android, Windows, Linux, iPhone</p></a>
+      <a class="fonction guide" href="mikhmon-android.html"><h3>Mikhmon Android</h3><p>Installer et utiliser sur téléphone</p></a>
+      <a class="fonction guide" href="mikhmon-windows.html"><h3>Mikhmon Windows</h3><p>Sur PC, impression des tickets</p></a>
+      <a class="fonction guide" href="mikhmon-vpn-back-to-home.html"><h3>Mikhmon VPN</h3><p>Votre routeur depuis n'importe où</p></a>
+      <a class="fonction guide" href="mikhmon-tickets-wifi-zone.html"><h3>Tickets wifi zone</h3><p>Créer des tickets en lot</p></a>
+      <a class="fonction guide" href="mikhmon-revendeurs-commissions.html"><h3>Revendeurs</h3><p>Commissions automatiques</p></a>
     </div>
   </div>
 </section>
