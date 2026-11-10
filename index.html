@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mikhmon – Application de gestion Hotspot MikroTik (Android, Windows) | Tickets wifi zone</title>
-<meta name="description" content="Mikhmon : application gratuite pour gérer votre hotspot wifi MikroTik (wifi zone) depuis votre téléphone Android ou votre ordinateur Windows. Tickets en lot, ventes, revendeurs, VPN Back To Home. Côte d'Ivoire et Afrique francophone.">
+<title>NUMOU WIFI : installation de wifi zone & application Mikhmon (gestion hotspot MikroTik)</title>
+<meta name="description" content="NUMOU WIFI installe votre wifi zone clé en main (Starlink, MikroTik), du kiosque au village, à partir de 700 000 F CFA. Et Mikhmon : application gratuite pour gérer votre hotspot wifi MikroTik (wifi zone) depuis votre téléphone Android ou votre ordinateur Windows. Tickets en lot, ventes, revendeurs, VPN Back To Home. Côte d'Ivoire et Afrique francophone.">
 <meta name="keywords" content="Mikhmon, Mikhmon Android, Mikhmon application, MikroTik hotspot, gestion hotspot MikroTik, wifi zone, tickets wifi, Back To Home, RouterOS, Côte d'Ivoire, NUMOU">
 <meta name="author" content="NUMOU">
 <meta name="robots" content="index, follow">
@@ -130,6 +130,32 @@
   a.guide:hover { border-color: var(--turquoise); }
   a.guide h3 { color: var(--turquoise); }
 
+  /* Offres NUMOU WIFI (en tête) */
+  .offres-accueil { background: linear-gradient(160deg, var(--nuit), var(--bleu) 60%, var(--turquoise)); color: #fff; padding: 56px 0 60px; }
+  .surtitre { color: var(--orange); font-weight: 800; letter-spacing: 1px; text-align: center; }
+  .titre-offres { text-align: center; font-size: clamp(30px, 4.6vw, 50px); line-height: 1.15; margin: 6px 0 12px; }
+  .titre-offres span { color: var(--orange); }
+  .intro-offres { text-align: center; max-width: 44em; margin: 0 auto 34px; font-size: 18px; opacity: .92; }
+  .grille-offres { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+  .carte-offre { background: #fff; color: var(--texte); border-radius: 16px; padding: 12px; display: flex; flex-direction: column; box-shadow: 0 10px 28px rgba(0,0,0,.25); }
+  .carte-offre.top { outline: 4px solid var(--orange); }
+  .carte-offre img { border-radius: 10px; aspect-ratio: 3/4; object-fit: cover; object-position: top; width: 100%; }
+  .carte-offre h3 { color: var(--nuit); font-size: 19px; margin: 10px 0 2px; }
+  .prix-offre { color: #b46e00; font-weight: 800; font-size: 22px; }
+  .prix-offre small { font-size: 13px; }
+  .carte-offre ul { list-style: none; font-size: 13px; color: var(--doux); margin: 6px 0 10px; flex: 1; }
+  .carte-offre li { padding: 2px 0; }
+  .boutons-offre { display: flex; gap: 6px; }
+  .boutons-offre .btn { flex: 1; justify-content: center; padding: 10px 8px; font-size: 14px; border-radius: 10px; }
+  .btn.wa { background: #25d366; color: #fff; }
+  .btn.clair { background: var(--turquoise-clair); color: var(--nuit); }
+  .btn.clair-fonce { background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.3); }
+  .liens-offres { text-align: center; margin-top: 28px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  @media (max-width: 1100px) { .grille-offres { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 700px) { .grille-offres { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .grille-offres { grid-template-columns: 1fr; } .carte-offre img { aspect-ratio: 4/3; } .liens-offres .btn { width: 100%; justify-content: center; } }
+  .carte-offre, .grille-offres > * { min-width: 0; }
+
   /* Questions fréquentes */
   .faq { max-width: 820px; margin: 0 auto; }
   .faq details { background: #fff; border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; box-shadow: 0 1px 3px rgba(15,42,74,.08); }
@@ -161,7 +187,6 @@
     .telephones img { width: 185px; }
     .fonctions, .plateformes { grid-template-columns: 1fr 1fr; }
     .ordinateur, .etapes { grid-template-columns: 1fr; }
-    #numou-wifi .page { grid-template-columns: 1fr !important; }
   }
   @media (max-width: 560px) {
     .fonctions, .plateformes { grid-template-columns: 1fr; }
@@ -175,14 +200,13 @@
 
 <header>
   <div class="page">
-    <a class="marque" href="#"><img src="images/icone.png" alt="">Mikhmon</a>
+    <a class="marque" href="#"><img src="images/icone.png" alt="">NUMOU WIFI</a>
     <nav class="liens">
-      <a href="#fonctions"><span data-lg="fr">Fonctions</span><span data-lg="en">Features</span></a>
-      <a href="#apercu"><span data-lg="fr">Aperçu</span><span data-lg="en">Preview</span></a>
+      <a href="#offres" style="color:#f5a524;opacity:1"><span data-lg="fr">Offres wifi zone</span><span data-lg="en">Wifi zone offers</span></a>
+      <a href="#application"><span data-lg="fr">Application Mikhmon</span><span data-lg="en">Mikhmon app</span></a>
       <a href="#telecharger"><span data-lg="fr">Télécharger</span><span data-lg="en">Download</span></a>
-      <a href="#installer"><span data-lg="fr">Installation</span><span data-lg="en">Install</span></a>
+      <a href="#tutoriel"><span data-lg="fr">Tutoriel</span><span data-lg="en">Tutorial</span></a>
       <a href="#guides"><span data-lg="fr">Guides</span><span data-lg="en">Guides</span></a>
-      <a href="offres.html" style="color:#f5a524;opacity:1"><span data-lg="fr">Offres wifi zone</span><span data-lg="en">Wifi zone offers</span></a>
     </nav>
     <div class="langues">
       <button type="button" data-langue="fr">FR</button>
@@ -191,7 +215,73 @@
   </div>
 </header>
 
-<div class="heros">
+<!-- OFFRES:DEBUT (généré par mikhmon/devis/page_offres.py) -->
+<section id="offres" class="offres-accueil">
+  <div class="page">
+    <p class="surtitre">NUMOU WIFI</p>
+    <h1 class="titre-offres" data-lg="fr">Installation de <span>wifi zone</span> clé en main</h1>
+    <h1 class="titre-offres" data-lg="en">Turnkey <span>wifi zone</span> installation</h1>
+    <p class="intro-offres" data-lg="fr">Du kiosque au village entier : Starlink, routeur MikroTik, antennes, relais et formation. Choisissez votre offre et commandez sur WhatsApp.</p>
+    <p class="intro-offres" data-lg="en">From a kiosk to a whole village: Starlink, MikroTik router, antennas, relays and training. Pick your package and order on WhatsApp.</p>
+    <div class="grille-offres">
+      <div class="carte-offre">
+        <a href="offres.html#kiosque"><img src="offres/kiosque.jpg" alt="Offre Kiosque" loading="lazy"></a>
+        <h3>Kiosque</h3>
+        <p class="prix-offre">700 000 <small>F CFA</small></p>
+        <ul><li>1 × Routeur MikroTik</li><li>1 × Starlink Mini</li><li>1 × Antenne wifi extérieure Comfast</li></ul>
+        <div class="boutons-offre">
+          <a class="btn wa" href="https://wa.me/2250172868486?text=Bonjour%20NUMOU%20WIFI%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20l%27offre%20Kiosque%20%28700%20000%20F%20CFA%29.%20Pouvez-vous%20me%20contacter%20%3F" target="_blank" rel="noopener">💬 <span data-lg="fr">Commander</span><span data-lg="en">Order</span></a>
+          <a class="btn clair" href="offres.html#kiosque"><span data-lg="fr">Détails</span><span data-lg="en">Details</span></a>
+        </div>
+      </div>
+      <div class="carte-offre">
+        <a href="offres.html#kiosque-soutra"><img src="offres/kiosque-soutra.jpg" alt="Offre Kiosque Soutra" loading="lazy"></a>
+        <h3>Kiosque Soutra</h3>
+        <p class="prix-offre">850 000 <small>F CFA</small></p>
+        <ul><li>1 × Starlink Mini</li><li>1 × Routeur MikroTik</li><li>2 × Antennes wifi extérieures Comfast</li></ul>
+        <div class="boutons-offre">
+          <a class="btn wa" href="https://wa.me/2250172868486?text=Bonjour%20NUMOU%20WIFI%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20l%27offre%20Kiosque%20Soutra%20%28850%20000%20F%20CFA%29.%20Pouvez-vous%20me%20contacter%20%3F" target="_blank" rel="noopener">💬 <span data-lg="fr">Commander</span><span data-lg="en">Order</span></a>
+          <a class="btn clair" href="offres.html#kiosque-soutra"><span data-lg="fr">Détails</span><span data-lg="en">Details</span></a>
+        </div>
+      </div>
+      <div class="carte-offre">
+        <a href="offres.html#quartier"><img src="offres/quartier.jpg" alt="Offre Quartier" loading="lazy"></a>
+        <h3>Quartier</h3>
+        <p class="prix-offre">1 350 000 <small>F CFA</small></p>
+        <ul><li>1 × Starlink V4</li><li>1 × Routeur MikroTik</li><li>1 × Antenne wifi extérieure Comfast</li></ul>
+        <div class="boutons-offre">
+          <a class="btn wa" href="https://wa.me/2250172868486?text=Bonjour%20NUMOU%20WIFI%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20l%27offre%20Quartier%20%281%20350%20000%20F%20CFA%29.%20Pouvez-vous%20me%20contacter%20%3F" target="_blank" rel="noopener">💬 <span data-lg="fr">Commander</span><span data-lg="en">Order</span></a>
+          <a class="btn clair" href="offres.html#quartier"><span data-lg="fr">Détails</span><span data-lg="en">Details</span></a>
+        </div>
+      </div>
+      <div class="carte-offre">
+        <a href="offres.html#multi-quartier"><img src="offres/multi-quartier.jpg" alt="Offre Multi-quartier" loading="lazy"></a>
+        <h3>Multi-quartier</h3>
+        <p class="prix-offre">2 250 000 <small>F CFA</small></p>
+        <ul><li>2 × Starlink V4</li><li>1 × Routeur MikroTik</li><li>2 × Antennes wifi extérieures Comfast</li></ul>
+        <div class="boutons-offre">
+          <a class="btn wa" href="https://wa.me/2250172868486?text=Bonjour%20NUMOU%20WIFI%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20l%27offre%20Multi-quartier%20%282%20250%20000%20F%20CFA%29.%20Pouvez-vous%20me%20contacter%20%3F" target="_blank" rel="noopener">💬 <span data-lg="fr">Commander</span><span data-lg="en">Order</span></a>
+          <a class="btn clair" href="offres.html#multi-quartier"><span data-lg="fr">Détails</span><span data-lg="en">Details</span></a>
+        </div>
+      </div>
+      <div class="carte-offre top">
+        <a href="offres.html#dougou"><img src="offres/dougou.jpg" alt="Offre Dougou" loading="lazy"></a>
+        <h3>Dougou</h3>
+        <p class="prix-offre">7 000 000 <small>F CFA</small></p>
+        <ul><li>6 × Starlink V4</li><li>1 × Routeur MikroTik hAP ax³</li><li>1 × Switch Cisco Catalyst 2960</li></ul>
+        <div class="boutons-offre">
+          <a class="btn wa" href="https://wa.me/2250172868486?text=Bonjour%20NUMOU%20WIFI%2C%20je%20suis%20int%C3%A9ress%C3%A9%20par%20l%27offre%20Dougou%20%287%20000%20000%20F%20CFA%29.%20Pouvez-vous%20me%20contacter%20%3F" target="_blank" rel="noopener">💬 <span data-lg="fr">Commander</span><span data-lg="en">Order</span></a>
+          <a class="btn clair" href="offres.html#dougou"><span data-lg="fr">Détails</span><span data-lg="en">Details</span></a>
+        </div>
+      </div>
+    </div>
+    <p class="liens-offres"><a class="btn principal" href="offres.html">🎬 <span data-lg="fr">Vidéos, devis PDF et détails des offres</span><span data-lg="en">Videos, PDF quotes and package details</span></a>
+    <a class="btn clair-fonce" href="#application">📱 <span data-lg="fr">Voir l'application Mikhmon</span><span data-lg="en">See the Mikhmon app</span></a></p>
+  </div>
+</section>
+<!-- OFFRES:FIN -->
+
+<div class="heros" id="application">
   <div class="page">
     <div>
       <h1 data-lg="fr">Gérez votre <span>hotspot wifi</span> MikroTik depuis votre téléphone</h1>
@@ -235,17 +325,6 @@
         <h3><span data-lg="fr">Partout, en 2 langues</span><span data-lg="en">Everywhere, in 2 languages</span></h3>
         <p><span data-lg="fr">Android, iPhone, Windows et Linux, en français et en anglais. Plusieurs routeurs.</span><span data-lg="en">Android, iPhone, Windows and Linux, in English and French. Several routers.</span></p></div>
     </div>
-  </div>
-</section>
-
-<section id="numou-wifi" style="background:linear-gradient(160deg,#0f2a4a,#13507a);color:#fff">
-  <div class="page" style="display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center">
-    <div>
-      <h2 style="color:#fff;text-align:left"><span data-lg="fr">Besoin d'une wifi zone ?</span><span data-lg="en">Need a wifi zone?</span></h2>
-      <p style="margin:12px 0 22px;opacity:.9;font-size:17px"><span data-lg="fr">NUMOU WIFI l'installe pour vous, clé en main : Starlink, routeur MikroTik, antennes, relais et formation. 5 offres, du kiosque au village entier, à partir de 700 000 F CFA.</span><span data-lg="en">NUMOU WIFI installs it for you, turnkey: Starlink, MikroTik router, antennas, relays and training. 5 packages, from a kiosk to a whole village, from 700,000 F CFA.</span></p>
-      <a class="btn principal" href="offres.html">📡 <span data-lg="fr">Voir les 5 offres</span><span data-lg="en">See the 5 packages</span></a>
-    </div>
-    <a href="offres.html"><img src="offres/5-offres.jpg" alt="Offres NUMOU WIFI" loading="lazy" style="border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.35);max-height:620px;margin:0 auto"></a>
   </div>
 </section>
 
